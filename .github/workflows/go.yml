@@ -19,7 +19,7 @@ jobs:
         go-version: 1.16
 
     - name: Build
-      run: go build -v -o output/gobuild --ldflags="-X main.REVISION=$(git rev-parse --short HEAD)"
+      run: go build -v -o output/gobuild --ldflags="-X main.REVISION=$(git rev-parse --short HEAD)　-X main.BUILD_TIME=$(TZ=-9 date '+%Y-%m-%d %H:%M:%S')"
 
     - name: Test
       run: go test -v ./...
