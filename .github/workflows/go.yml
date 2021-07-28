@@ -19,16 +19,16 @@ jobs:
         go-version: 1.16
 
     - name: Build
-      run: go build -v -o output/gobuild
+      run: go build -v -o output/gobuild --ldflags="-X main.REVISION=$(git rev-parse --short HEAD)"
 
     - name: Test
       run: go test -v ./...
 
     # package project files
-    - name: compressive archive
-      run: tar cvfz gobuild.tar.gz  output/gobuild
+#     - name: compressive archive
+#       run: tar cvfz gobuild.tar.gz  output/gobuild
     - name: staging
-      run: mkdir staging && mv gobuild.tar.gz staging/
+      run: mkdir staging && mv output/gobuild staging/
     - uses: actions/upload-artifact@v2
       with:
         name: Package
