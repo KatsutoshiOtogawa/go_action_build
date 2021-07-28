@@ -22,7 +22,7 @@ jobs:
       run: go get
       
     - name: Build
-      run: go build -v -o output/gobuild --ldflags="-X main.REVISION=$(git rev-parse --short HEAD) -X main.BUILD_TIME=$(date +%Y-%m-%d_%H:%M:%S)" .
+      run: go build -v -o output/gobuild --ldflags="-X main.REVISION=$(git rev-parse --short HEAD) -X main.BUILD_TIME=$(TZ=-9 date +%Y-%m-%d_%H:%M:%S)" .
 
     - name: Test
       run: go test -v ./...
