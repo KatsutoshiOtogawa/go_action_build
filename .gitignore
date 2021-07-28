@@ -1,2 +1,4 @@
 /output/*
 !/output/.gitignore
+
+go.sum
