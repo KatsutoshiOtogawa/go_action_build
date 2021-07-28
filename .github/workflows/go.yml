@@ -25,10 +25,10 @@ jobs:
       run: go test -v ./...
 
     # package project files
-#     - name: compressive archive
-#       run: tar cvfz gobuild.tar.gz  output/gobuild
+    - name: compressive archive
+      run: tar cvfz gobuild.tar.gz  output/gobuild
     - name: staging
-      run: mkdir staging && mv output/gobuild staging/
+      run: mkdir staging && mv gobuild.tar.gz staging/
     - uses: actions/upload-artifact@v2
       with:
         name: Package
